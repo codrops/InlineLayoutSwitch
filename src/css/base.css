@@ -1,0 +1,653 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 16px;
+	--color-text: #fff;
+	--color-text-alt: rgba(114,116,114,0.6);
+	--color-link: #ccc;
+	--color-link-hover: #fff;
+	--color-bg: #000;
+	--padding-ver: 0.5rem;
+	--padding-hor: 0.5rem;
+	--cursor-stroke: #cc1111;
+}
+
+.demo-2 {
+	--color-text-alt: rgba(193,193,193,0.8);
+}
+
+body {
+	margin: 0;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: acumin-pro, sans-serif;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	width: 100%;
+}
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+
+.js .loading::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--color-bg);
+}
+
+.js .loading::after {
+	top: 50%;
+	left: 50%;
+	width: 40px;
+	height: 40px;
+	margin: -20px 0 0 -20px;
+	opacity: 0.5;
+	background: var(--color-text-alt);
+	animation: loaderAnim 0.7s linear infinite forwards;
+
+}
+
+@keyframes loaderAnim {
+	to {
+		transform: rotate(360deg)
+	}
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-link);
+	outline: none;
+	cursor: pointer;
+}
+
+a:hover {
+	color: var(--color-link-hover);
+	outline: none;
+}
+
+/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+a:focus {
+	/* Provide a fallback style for browsers
+	 that don't support :focus-visible */
+	outline: none;
+	background: lightgrey;
+}
+
+a:focus:not(:focus-visible) {
+	/* Remove the focus indicator on mouse-focus for browsers
+	 that do support :focus-visible */
+	background: transparent;
+}
+
+a:focus-visible {
+	/* Draw a very noticeable focus style for
+	 keyboard-focus on browsers that do support
+	 :focus-visible */
+	outline: 2px solid red;
+	background: transparent;
+}
+
+.unbutton {
+	background: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	cursor: pointer;
+	color: var(--color-text);
+}
+
+.unbutton:focus {
+	outline: none;
+}
+
+main {
+	display: grid;
+	height: 100vh;
+	padding: 0;
+	position: relative;
+}
+
+.oh {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.oh__inner {
+	display: inline-block;
+	will-change: transform;
+}
+
+.frame {
+	z-index: 100;
+	padding: var(--padding-hor) var(--padding-ver);
+	grid-gap: .5rem;
+	pointer-events: none;
+	text-transform: uppercase;
+	width: 100%;
+	grid-template: "title" "prev" "sponsor" "nav" / 100%;
+	grid-template-rows: repeat(4, min-content);
+	grid-area: 1 / 1 / 2 / 2;
+	justify-content: start;
+	justify-items: start;
+	font-size: .75rem;
+	display: grid;
+	position: relative;
+}
+
+.frame a {
+	pointer-events: auto
+}
+
+.frame a:not(.frame__title-back) {
+	white-space: nowrap;
+	position: relative;
+	overflow: hidden
+}
+
+.frame a:not(.frame__title-back):before {
+	content: "";
+	height: 1px;
+	width: 100%;
+	transform-origin: 0%;
+	background: currentColor;
+	transition: transform .3s;
+	position: absolute;
+	top: 90%
+}
+
+.frame a:not(.frame__title-back):hover:before {
+	transform-origin: 100%;
+	transform: scaleX(0)
+}
+
+.frame__title {
+	grid-area: title;
+	display: flex;
+}
+
+.frame__title-main {
+	margin: 0;
+	font-size: .75rem;
+	font-weight: 400;
+}
+
+.frame__title-back {
+	align-items: flex-end;
+	display: flex;
+	position: relative
+}
+
+.frame__title-back span {
+	display: none
+}
+
+.frame__title-back svg {
+	fill: currentColor
+}
+
+.frame__prev {
+	grid-area: prev
+}
+
+.frame__demos {
+	flex-wrap: wrap;
+	grid-area: nav;
+	justify-self: stretch;
+	gap: 1.5rem;
+	display: flex;
+}
+
+.prime {
+	grid-area: 1 / 1 / 2 / 2;
+	padding: 10rem var(--padding-ver) 0;
+	position: relative;
+	z-index: 30;
+	display: flex;
+	flex-direction: column;
+}
+
+.demo-2 .prime {
+	will-change: clip-path;
+}
+
+.content-open .prime {
+	pointer-events: none;
+}
+
+.intro {
+	grid-column: 1 / span 2;
+	grid-row: 1 / span 3;
+	display: inline-flex;
+	gap: 0;
+	line-height: 1.2;
+	flex-wrap: wrap;
+	font-size: 7.5vw;
+	letter-spacing: -0.25vw;
+	align-items: center;
+	align-content: center;
+	font-weight: 100;
+	font-family: articulat-cf, sans-serif;
+	font-weight: 100;
+	font-style: normal;
+}
+
+.intro .oh__inner {
+	padding: 0 1vw;
+}
+
+.intro em.oh__inner {
+	padding: 0 2vw;
+}
+
+.intro .image-wrap:first-child {
+	padding-left: 2vw;
+}
+
+.intro em {
+	font-family: miller-banner, serif;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.intro--close {
+	pointer-events: none;
+}
+
+.image-wrap {
+	width: 11vw;
+	aspect-ratio: 1.75;
+	position: relative;
+}
+
+.image-wrap .image {
+	width: 100%;
+	height: 100%;
+}
+
+.image {
+	overflow: hidden;
+	position: relative;
+	display: grid;
+	place-items: center;
+	will-change: transform;
+}
+
+.prime .image--bg {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.image__inner {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+.meta__title {
+	font-size: clamp(1rem,5vw,2.25rem);
+	font-family: miller-banner, serif;
+	font-weight: 300;
+	font-style: italic;
+	margin: 0;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.meta__title .oh__inner {
+	padding: 0 0.25rem;
+}
+
+.nav-wrap {
+	margin-top: auto;
+	padding: var(--padding-hor) 0;
+	border-top: 1px solid var(--color-text-alt);
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: 'logo social' 'nav nav';
+	align-items: center;
+	will-change: transform;
+}
+
+.demo-2 .nav-wrap {
+	padding-bottom: calc(var(--padding-hor) + 20px);
+}
+
+.logo {
+	grid-area: logo;
+}
+
+.logo__years {
+	font-size: 0.75rem;
+	line-height: 1;
+}
+
+.logo__title {
+	text-transform: uppercase;
+	margin: 0;
+	font-size: 3rem;
+	line-height: 1;
+	font-family: articulat-cf, sans-serif;
+	font-weight: 100;
+}
+
+.nav {
+	text-transform: uppercase;
+	grid-area: nav;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	padding-top: 2rem;
+}
+
+.nav__item {
+	color: var(--color-text-alt);
+	display: flex;
+	flex-direction: column;
+	pointer-events: none;
+}
+
+.nav__item--active {
+	color: var(--color-text);
+	pointer-events: auto;
+}
+
+.social {
+	grid-area: social;
+	display: flex;
+	gap: 1rem;
+	justify-self: end;
+}
+
+.content {
+	position: relative;
+	grid-area: 1 / 1 / 2 / 2;
+	display: grid;
+	height: 100%;
+	grid-template-rows: repeat(5,min-content);
+	grid-template-columns: 100%;
+	align-content: space-between;
+	justify-items: center;
+	padding: 0.5rem;
+}
+
+.content__item {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 215px;
+	grid-template-rows: 130px;
+	grid-column-gap: 4vw;
+	align-items: center;
+	justify-items: end;
+	z-index: 20;
+	position: relative;
+}
+
+.content__item:last-child {
+	z-index: 1;
+}
+
+.content__item .image {
+	grid-column: 2;
+}
+
+.content .image {
+	width: 215px;
+	height: 100%;
+}
+
+.title-wrap {
+	opacity: 0;
+	display: grid;
+	grid-template-rows: auto auto;
+	grid-template-columns: auto auto;
+	grid-template-areas: 'back ...' 'number ...' '... title';
+}
+
+.content__item--current .title-wrap {
+	opacity: 1;
+}
+
+.title-wrap .oh__inner {
+	transform: translateY(100%);
+}
+
+.back {
+	grid-area: back;
+	stroke: var(--color-link);
+	cursor: pointer;
+	fill: none;
+}
+
+.back svg {
+	pointer-events: none;
+}
+
+.content .back {
+	opacity: 0;
+}
+
+.number {
+	grid-area: number;
+	font-size: 0.65rem;
+	justify-self: end;
+}
+
+.title {
+	grid-area: title;
+	font-family: miller-banner, serif;
+	font-weight: 300;
+	font-style: italic;
+	margin: 0;
+	font-size: 4vw;
+	text-transform: lowercase;
+	white-space: nowrap;
+}
+
+.title .oh__inner {
+	padding: 0 0.5vw;
+}
+
+.grid {
+	grid-area: 1 / 1 / -1 / -1;
+	width: 100%;
+	max-width: 1100px;
+	padding: var(--padding-ver) var(--padding-hor);
+	grid-gap: 1rem;
+	max-height: 100vh;
+	display: grid;
+	grid-template-columns: repeat(7,1fr);
+	grid-template-rows: repeat(7,1fr);
+	align-content: center;
+	margin: auto;
+}
+
+.grid__item {
+	width: 100%;
+	max-width: 145px;
+	aspect-ratio: 145/88;
+	will-change: transform;
+	position: relative;
+	overflow: hidden;
+	display: grid;
+	place-items: center;
+}
+
+.grid__item:nth-child(1) {
+    grid-area: 2/1
+}
+
+.grid__item:nth-child(2) {
+    grid-area: 3/1
+}
+
+.grid__item:nth-child(3) {
+    grid-area: 4/2
+}
+
+.grid__item:nth-child(4) {
+    grid-area: 3/3
+}
+
+.grid__item:nth-child(5) {
+    grid-area: 7/3
+}
+
+.grid__item:nth-child(6) {
+    grid-area: 5/3
+}
+
+.grid__item:nth-child(7) {
+    grid-area: 5/4
+}
+
+.grid__item:nth-child(8) {
+    grid-area: 6/4
+}
+
+.grid__item:nth-child(9) {
+    grid-area: 1/5
+}
+
+.grid__item:nth-child(10) {
+    grid-area: 3/5
+}
+
+.grid__item:nth-child(11) {
+    grid-area: 4/5
+}
+
+.grid__item:nth-child(12) {
+    grid-area: 2/6
+}
+
+.grid__item:nth-child(13) {
+    grid-area: 5/6
+}
+
+.grid__item:nth-child(14) {
+    grid-area: 6/7
+}
+
+.grid__item .image {
+	width: 100%;
+	height: 100%;
+}
+
+.view {
+	cursor: pointer;
+	stroke: #fff;
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	border: 1px solid #fff;
+	width: 14rem;
+ 	aspect-ratio: 1;
+ 	text-align: center;
+}
+
+.view__text {
+	text-transform: uppercase;
+}
+
+.view svg {
+	transform: scale(-1,-1);
+	margin-top: 0.5rem;
+}
+
+.cursor {
+	display: none;
+}
+
+@media screen and (min-width: 53em) {
+	:root {
+		--padding-ver: 2.5rem;
+		--padding-hor: 1rem;
+	}
+	body {
+		height: 100%;
+		overflow: hidden;
+	}
+	.frame {
+		grid-gap: 2rem;
+		grid-template-areas: "title prev nav sponsor";
+		grid-template-columns: auto auto 1fr auto;
+		grid-template-rows: auto;
+		grid-area: 1 / 1 / -1 / -1;
+		align-content: space-between;
+	}
+	.content__item {
+		grid-template-columns: 1fr 215px 1fr;
+	}
+	.title-wrap {
+		opacity: 1;
+	}
+	.frame__demos {
+		justify-self: end;
+		padding-right: 5vw;
+	}
+	.prime {
+		padding-top: 6rem;
+	}
+	.nav-wrap {
+		grid-template-columns: 20% 1fr 10% 10%;
+		grid-template-areas: 'logo nav ... social';
+	}
+	.nav {
+		padding: 0;
+		gap: 3vw;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.nav__item::after {
+		content: '...';
+		display: block;
+		font-weight: 400;
+		font-size: 1.15rem;
+		text-align: center;
+		line-height: 0.9;
+	}
+}
+
+@media (any-pointer:fine) {
+	.cursor {
+		position: fixed;
+		top: 0;
+		left: 0;
+		display: block;
+		pointer-events: none;
+		z-index: 10000;
+	}
+
+	.cursor__inner {
+		fill: none;
+		stroke: var(--cursor-stroke);
+		stroke-width: 1.3px;
+	}
+
+	.no-js .cursor {
+		display: none;
+	}
+}
+

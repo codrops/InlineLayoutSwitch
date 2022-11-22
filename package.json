@@ -1,0 +1,30 @@
+{
+  "name": "inlinelayoutswitch",
+  "version": "1.0.0",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "description": "Two ideas for page transitions from an inline view to an image column or grid.",
+  "scripts": {
+    "start": "parcel src/index.html --open",
+    "clean": "rm -rf dist/*",
+    "build:parcel": "parcel build src/index.html --no-content-hash --no-source-maps --public-url ./",
+    "build": "npm run clean && npm run build:parcel"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/codrops/InlineLayoutSwitch.git"
+  },
+  "keywords": [],
+  "author": "Codrops",
+  "license": "MIT",
+  "homepage": "https://tympanus.net/codrops",
+  "bugs": {
+    "url": "https://github.com/codrops/InlineLayoutSwitch/issues"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.0"
+  },
+  "dependencies": {
+    "gsap": "^3.11.3",
+    "imagesloaded": "^5.0.0"
+  }
+}
