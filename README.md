@@ -1,21 +1,12 @@
-*How to use this template:*
+# Inline Layout Switch
 
-- The general styles for the demo page are in css/base.css
-- The README.md can be used to add credits of resources used
-- For writing the tutorial, take a look at https://github.com/crnacura/CodropsTemplate/wiki/Writing-the-article
-- Delete this 'how to' in the final version and leave the following (fill in title/description, credits and social links, we'll do the rest):
+Two ideas for page transitions from an inline view to an image column or grid.
 
--------
+![Inline Layout Switch](https://tympanus.net/codrops/wp-content/uploads/2022/11/inlinelayoutswitch_feat.jpg)
 
-# The Title
+[Article on Codrops](https://tympanus.net/codrops/?p=65913)
 
-*A description of the demo goes here.*
-
-![Image Title](https://generative-placeholders.glitch.me/image?width=800&height=600")
-
-[Article on Codrops](https://tympanus.net/codrops/?p=)
-
-[Demo](http://tympanus.net/Development/.../)
+[Demo](https://tympanus.net/Development/InlineLayoutSwitch/)
 
 
 ## Installation
@@ -43,8 +34,6 @@ npm run build
 - Images from [Unsplash](https://unsplash.com/)
 
 ## Misc
-
-Follow *Author*: [Twitter](), [Dribbble](), [Google+](), [GitHub]() 
 
 Follow Codrops: [Twitter](http://www.twitter.com/codrops), [Facebook](http://www.facebook.com/codrops), [GitHub](https://github.com/codrops), [Instagram](https://www.instagram.com/codropsss/)
 
